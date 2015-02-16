@@ -3,3 +3,13 @@ bin/
 !.project
 !.classpath
 !.settings/
+itp01/tycho.demo.itp01.tests/.settings/
+itp01/tycho.demo.itp01/.settings/
+itp01/tycho.demo.itp01.tests/.classpath
+itp01/tycho.demo.itp01.tests/.project
+itp01/tycho.demo.itp01/.classpath
+itp01/tycho.demo.itp01/.project
+itp01/.project
+itp01/.classpath
+itp01/.settings/
+
