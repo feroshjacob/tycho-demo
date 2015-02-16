@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
    <extension
-         id="application"
-         point="org.eclipse.core.runtime.applications">
-      <application>
-         <run
-               class="tycho.demo.itp.Application">
-         </run>
-      </application>
+         point="org.eclipse.ui.commands">
+      <category
+            id="tycho.demo.itp01.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="tycho.demo.itp01.commands.category"
+            id="tycho.demo.itp01.commands.sampleCommand"
+            name="Sample Command">
+      </command>
    </extension>
    <extension
-         point="org.eclipse.ui.perspectives">
-      <perspective
-            name="RCP Perspective"
-            class="tycho.demo.itp.Perspective"
-            id="tycho.demo.itp.perspective">
-      </perspective>
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="tycho.demo.itp01.handlers.SampleHandler"
+            commandId="tycho.demo.itp01.commands.sampleCommand">
+      </handler>
    </extension>
    <extension
-         id="product"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="tycho.demo.itp.application"
-            name="Tycho Implicit Build Target Platform Demo">
-      </product>
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="tycho.demo.itp01.commands.sampleCommand"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
    </extension>
    <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="tycho.demo.itp01.actionSet"
-            label="Sample Action Set"
-            visible="true">
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               id="sampleMenu"
-               label="Sample &amp;Menu">
-            <separator
-                  name="sampleGroup">
-            </separator>
+               id="tycho.demo.itp01.menus.sampleMenu"
+               label="Sample Menu"
+               mnemonic="M">
+            <command
+                  commandId="tycho.demo.itp01.commands.sampleCommand"
+                  id="tycho.demo.itp01.menus.sampleCommand"
+                  mnemonic="S">
+            </command>
          </menu>
-         <action
-               class="tycho.demo.itp01.actions.SampleAction"
-               icon="icons/sample.gif"
-               id="tycho.demo.itp01.actions.SampleAction"
-               label="&amp;Sample Action"
-               menubarPath="sampleMenu/sampleGroup"
-               toolbarPath="sampleGroup"
-               tooltip="Hello, Eclipse world">
-         </action>
-      </actionSet>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="tycho.demo.itp01.toolbars.sampleToolbar">
+            <command
+                  commandId="tycho.demo.itp01.commands.sampleCommand"
+                  icon="icons/sample.gif"
+                  id="tycho.demo.itp01.toolbars.sampleCommand"
+                  tooltip="Say hello world">
+            </command>
+         </toolbar>
+      </menuContribution>
    </extension>
 
+   
 </plugin>
+ 
